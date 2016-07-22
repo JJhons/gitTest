@@ -8,7 +8,6 @@
 	*{
 		margin:0;
 		padding:0;
-		border-image: none;
 	}
 		body{
 			background-color: #000;
@@ -53,10 +52,9 @@
 					var nIndex = this.index;
 					for(var j=0;j<oImg.length;j++){
 						oImg[j].style.left = oImg[j].offsetLeft-(nIndex-mIndex)*200+'px';
-						//this.className='middle';
-						if(j<mIndex){
+						if(j<nIndex){
 							oImg[j].className='left';
-						}else if(j == mIndex){
+						}else if(j == nIndex){
 							oImg[j].className = 'middle';
 						}else{
 							oImg[j].className = 'right';
