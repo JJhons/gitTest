@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html ng-app='wsscat'>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,user-scalable=no">
+		<title></title>
+	</head>
+	<script type="text/javascript" src="dist/js/angular.js"></script>
+	<script src="dist/js/angular-route.js"></script>
+	<link rel="stylesheet" href="dist/css/base.css" />
+	<body>
+		<div ng-view=''></div>
+	</body>
+	<script>
+		var app = angular.module('wsscat',['ngRoute']);
+		app.config(function($routeProvider){
+			$routeProvider.when('/index',{
+				controller:'indexCtrl',
+				templateUrl:'view/index.html'
+			})
+			.otherwise({
+				redirectTo:'/index'
+			})
+		})
+		app.controller('indexCtrl',function($scope,$http){
+			$http.get('baiduApi.php').success(function(data){
+				console.log(data);
+				$scope.news = data.retData;
+				console.log($scope.news);
+			})
+		})
+	</script>
+</html>
